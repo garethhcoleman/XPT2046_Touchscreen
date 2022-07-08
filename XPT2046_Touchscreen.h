@@ -22,6 +22,9 @@
 
 #ifndef _XPT2046_Touchscreen_h_
 #define _XPT2046_Touchscreen_h_
+#define ADC_VBAT  0
+#define ADC_AUXIN 1
+#define ADC_TEMP  2
 
 #include "Arduino.h"
 #include <SPI.h>
@@ -61,6 +64,11 @@ public:
 	bool bufferEmpty();
 	uint8_t bufferSize() { return 1; }
 	void setRotation(uint8_t n) { rotation = n % 4; }
+    float getVBat();
+    float getAuxIn();
+    float getTemp();
+    float getTempF();
+    int16_t updateADC(int16_t adc);
 // protected:
 	volatile bool isrWake=true;
 
