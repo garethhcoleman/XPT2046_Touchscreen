@@ -268,7 +268,7 @@ float XPT2046_Touchscreen::getVBat()
 {
     int16_t data = updateADC(ADC_VBAT);
     
-    float vbat  = ((data*0.0031) + (-0.3799));
+    float vbat  = data*0.00234;
     if (vbat <= 0.135) vbat = 0.0; //0.125V is the minimum
     
     return vbat;
